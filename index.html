@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DesignCoach — Your AI Mentor for 3D Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080B12;--card:#0e1420;--card2:#131b2b;--line:#1e2a40;--p:#168CFF;--c:#35D7FF;--v:#7C4DFF;--t:#e8eefb;--m:#8a98b4;--ok:#35d7a0;--warn:#ffb84d;--bad:#ff6b7a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(700px 400px at 90% -5%,rgba(22,140,255,.16),transparent),var(--bg);color:var(--t);font-family:Vazirmatn,Tahoma,sans-serif;line-height:1.7;min-height:100vh}
+button{font:inherit;cursor:pointer;border:0;color:inherit}
+.btn{background:linear-gradient(135deg,var(--p),var(--c));color:#04101c;font-weight:800;padding:14px 20px;border-radius:14px;width:100%;display:flex;gap:8px;justify-content:center;align-items:center}
+.btn.g{background:var(--card2);color:var(--t);border:1px solid var(--line);font-weight:600}
+.logo{font-weight:800;font-size:22px;display:flex;gap:10px;align-items:center;direction:ltr}.logo span{color:var(--c)}
+.lg{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--p),var(--c) 65%,var(--v));display:grid;place-items:center;color:#04101c}
+.auth{max-width:420px;margin:8vh auto;padding:28px;background:var(--card);border:1px solid var(--line);border-radius:20px}
+.auth input{width:100%;padding:13px;margin:6px 0;background:var(--bg);border:1px solid var(--line);border-radius:12px;color:var(--t);font:inherit}
+#app{display:none}
+.top{position:sticky;top:0;z-index:4;display:flex;gap:10px;align-items:center;padding:14px 16px;background:rgba(8,11,18,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.ib{width:46px;height:46px;border-radius:13px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;color:var(--m);flex:none;position:relative}
+.ib.pl{background:linear-gradient(135deg,var(--p),var(--c));color:#04101c;border:0}
+.ib i{position:absolute;top:10px;left:11px;width:8px;height:8px;border-radius:50%;background:var(--c)}
+.sr{flex:1;display:flex;gap:8px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:13px;height:46px;padding:0 12px;color:var(--m);min-width:0}
+.sr input{flex:1;min-width:0;background:none;border:0;color:var(--t);font:inherit;outline:0}
+main{max-width:760px;margin:0 auto;padding:24px 18px 60px}
+.ey{font-size:12px;letter-spacing:.14em;color:var(--m);display:flex;gap:8px;align-items:center}.ey:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c)}
+h1{font-size:34px;margin:6px 0 2px;font-weight:800;line-height:1.3}h2{font-size:22px;margin:30px 0 2px}h3{margin:0 0 8px}
+.sub{color:var(--m);margin:0 0 16px;font-size:15px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px}
+.dz{border:1.5px dashed #2a3a58;border-radius:20px;padding:20px;background:linear-gradient(160deg,rgba(22,140,255,.08),transparent)}
+.dz .r{display:flex;gap:14px;align-items:center;margin-bottom:18px}
+.ico{width:58px;height:58px;border-radius:15px;border:1px solid var(--line);background:rgba(22,140,255,.1);display:grid;place-items:center;color:var(--c);flex:none}
+.dz b{font-size:19px}.dz p{margin:0;color:var(--m);font-size:14px}
+.pj{padding:0;overflow:hidden}
+.th{position:relative;aspect-ratio:16/10;background:#000}.th svg,.th img{width:100%;height:100%;display:block;object-fit:cover}
+.pill{position:absolute;top:12px;right:12px;font-size:11px;letter-spacing:.08em;background:rgba(8,11,18,.8);border:1px solid var(--line);padding:3px 12px;border-radius:9px;display:flex;gap:6px;align-items:center}.pill:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c)}
+.sc{position:absolute;bottom:12px;right:12px;background:rgba(8,11,18,.85);border:1px solid var(--line);border-radius:14px;padding:6px 16px;display:flex;gap:10px;align-items:center;font-size:11px;color:var(--m);line-height:1.2}.sc b{font-size:30px;color:var(--c)}
+.pb{padding:18px}.cat{font-size:12px;letter-spacing:.1em;color:var(--m)}
+.br{display:flex;gap:12px;align-items:center;margin:10px 0;font-size:14px}.br span:first-child{width:88px;color:var(--m);direction:ltr;text-align:right}.br div{flex:1;height:6px;background:var(--line);border-radius:9px;overflow:hidden}.br div i{display:block;height:100%;border-radius:9px;background:var(--c)}.br b{width:28px;text-align:left}
+.pr{display:flex;gap:12px;align-items:center;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:12px;margin:14px 0;font-size:14px}.pr small{display:block;color:var(--m);letter-spacing:.1em;font-size:11px}
+.ls{padding:0;overflow:hidden}.ls div{display:flex;gap:14px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}.ls div:last-child{border:0}.ls small{color:var(--m)}.ls .ico{width:46px;height:46px}
+.ins{background:linear-gradient(150deg,rgba(124,77,255,.14),rgba(22,140,255,.08));position:relative}
+.ins a{color:var(--c);font-weight:700;display:flex;gap:6px;align-items:center;margin-top:12px;cursor:pointer}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.big{font-size:28px;font-weight:800;color:var(--c)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}.chip{background:var(--card2);border:1px solid var(--line);padding:6px 14px;border-radius:99px;font-size:14px;color:var(--m);cursor:pointer}.chip.on{border-color:var(--p);color:var(--t);background:rgba(22,140,255,.18)}
+.stage{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10}.stage svg,.stage img{width:100%;height:100%;display:block;object-fit:cover}
+.pin{position:absolute;width:26px;height:26px;margin:-13px;border-radius:50%;background:var(--bad);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center;box-shadow:0 0 0 4px rgba(255,107,122,.3);cursor:pointer}.pin.m{background:var(--warn);color:#000}.pin.l{background:var(--ok);color:#000}.pin.sel{outline:3px solid var(--c)}
+.issue{border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;background:var(--card2);cursor:pointer}.issue.sel{border-color:var(--c)}
+.tg{font-size:11px;padding:2px 8px;border-radius:9px;margin-left:6px;background:rgba(255,107,122,.2);color:var(--bad)}.tg.m{background:rgba(255,184,77,.2);color:var(--warn)}.tg.l{background:rgba(53,215,160,.2);color:var(--ok)}
+.why{display:none;margin-top:8px;padding:10px;border-radius:10px;background:rgba(124,77,255,.12);border:1px solid rgba(124,77,255,.35);font-size:14px}.learn .why{display:block}
+.sw{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--m);margin:12px 0;cursor:pointer}.sw i{width:40px;height:22px;border-radius:99px;background:var(--line);position:relative;flex:none}.sw i:after{content:"";position:absolute;top:3px;right:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s}.sw.on i{background:var(--p)}.sw.on i:after{right:21px}
+.drop{text-align:center;color:var(--m)}.fmts{margin-top:14px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center;font-size:13px}.fmt{direction:ltr;font-size:12px;padding:2px 10px;border-radius:8px;background:var(--card2);border:1px solid var(--line);color:var(--c)}.fmt.on{background:rgba(124,77,255,.2);border-color:var(--v);color:var(--t);font-weight:800;padding:8px 12px}
+.mfile{display:flex;gap:12px;align-items:center;margin-bottom:12px;padding:12px}.note{color:var(--m);font-size:12px;margin-top:10px}
+.cmp{position:relative;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:1px solid var(--line)}.cmp>div{position:absolute;inset:0}.cmp svg{width:100%;height:100%;display:block}.lab{position:absolute;top:10px;background:rgba(0,0,0,.6);padding:2px 10px;border-radius:9px;font-size:12px;z-index:2}
+input[type=range]{width:100%;margin-top:12px;accent-color:var(--c)}
+.price{position:relative}.price.hot{border-color:var(--p);box-shadow:0 0 30px rgba(22,140,255,.2)}.price ul{padding-right:18px;color:var(--m);font-size:14px}.badge{position:absolute;top:-10px;left:14px;background:var(--v);font-size:11px;padding:2px 10px;border-radius:9px}
+.row{display:flex;justify-content:space-between;font-size:14px;padding:7px 0}.faq{border-bottom:1px solid var(--line);padding:10px 0;color:var(--m);font-size:14px}.faq b{color:var(--t)}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9;display:none}.ov.on{display:block}
+.dr{position:absolute;inset:0 0 0 auto;width:min(86vw,330px);background:#0b101a;border-left:1px solid var(--line);padding:calc(20px + env(safe-area-inset-top,0px)) 16px 20px;overflow-y:auto}
+.dr small{display:block;letter-spacing:.2em;color:var(--m);font-size:12px;margin:24px 8px 8px}
+.it{display:flex;gap:14px;align-items:center;padding:12px 14px;border-radius:13px;color:var(--m);background:none;width:100%;text-align:right;font-size:16px}.it.on{background:var(--card2);color:var(--t);box-shadow:inset -3px 0 0 var(--c)}
+.up{margin-top:22px;border:1px solid var(--line);border-radius:18px;padding:16px;background:linear-gradient(150deg,rgba(124,77,255,.12),rgba(22,140,255,.08))}.up p{color:var(--m);font-size:14px;margin:4px 0 12px}
+.usr{display:flex;gap:12px;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}.av{width:44px;height:44px;border-radius:50%;background:var(--card2);border:1px solid var(--line);display:grid;place-items:center;font-size:13px}
+.dg>div,.ag>div{min-width:0}
+@media(min-width:1024px){
+#app{padding-right:272px}
+#mn,.xb{display:none!important}
+#ov{display:block!important;background:none;inset:0 0 0 auto;width:272px}
+.dr{position:static;width:100%;height:100%;padding-top:26px}
+.top{padding:14px 40px}.top .sr{flex:none;width:520px;margin-left:auto}
+main{max-width:1180px;padding:34px 40px 80px}
+h1{font-size:40px}
+.dg{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
+.ag{display:grid;grid-template-columns:1.15fr 1fr;gap:30px;align-items:start}
+.g2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.cmp,.cmp+input{max-width:880px}
+.drop{max-width:760px}
+}
+</style>
+</head>
+<body>
+<div id="auth" class="auth">
+  <div class="logo"><div class="lg" id="lg0"></div>Design<span>Coach</span></div>
+  <p style="color:var(--c);direction:ltr;font-size:13px;margin:8px 0 18px">Your AI Mentor for 3D Design</p>
+  <h3 id="at">ورود به حساب</h3>
+  <input placeholder="ایمیل" dir="ltr"><input type="password" placeholder="رمز عبور" dir="ltr">
+  <button class="btn" style="margin-top:10px" onclick="enter()">ورود به داشبورد</button>
+  <p class="note" style="text-align:center">حساب ندارید؟ <a href="#" style="color:var(--c)" onclick="document.getElementById('at').textContent='ثبت‌نام رایگان';return false">ثبت‌نام</a> — نسخهٔ نمایشی</p>
+</div>
+<div id="app">
+  <header class="top">
+    <button class="ib" onclick="dr(1)" aria-label="منو" id="mn"></button>
+    <label class="sr"><span id="si"></span><input placeholder="جستجوی پروژه‌ها و بازخوردها…"></label>
+    <button class="ib" id="bl"><i></i></button>
+    <button class="ib pl" onclick="newA()" id="pl" aria-label="تحلیل جدید"></button>
+  </header>
+  <div class="ov" id="ov" onclick="dr(0)"><aside class="dr" onclick="event.stopPropagation()" id="dr"></aside></div>
+  <main id="main"></main>
+</div>
+<script>
+const P={menu:'M4 6h16M4 12h16M4 18h16',search:'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-5-5',bell:'M6 16v-5a6 6 0 1 1 12 0v5l2 2H4zM10 21h4',plus:'M12 5v14M5 12h14',upload:'M12 16V4M7 9l5-5 5 5M4 20h16',chev:'M15 6l-6 6 6 6',spark:'M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z',check:'M5 12l5 5 9-10',clock:'M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM12 8v4l3 2',cube:'M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12v9M12 12L4 7.5',grid:'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z',folder:'M3 7h6l2 2h10v10H3z',chart:'M5 20V10M12 20V4M19 20v-7',book:'M4 5h7a2 2 0 0 1 1 1v14a2 2 0 0 0-1-1H4zM20 5h-7a2 2 0 0 0-1 1v14a2 2 0 0 1 1-1h7z',gear:'M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2',help:'M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17v.1',x:'M6 6l12 12M18 6L6 18'};
+const I=(n,s=22)=>`<svg viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="${P[n]}"/></svg>`;
+const $=s=>document.querySelector(s);
+$('#lg0').innerHTML=I('cube',24);$('#mn').innerHTML=I('menu');$('#si').innerHTML=I('search',18);$('#bl').insertAdjacentHTML('afterbegin',I('bell'));$('#pl').innerHTML=I('plus');
+const SC=[['Modeling',86],['Materials',78],['Lighting',64],['Camera',70],['Composition',75]];
+const IS=[
+{t:'نورپردازی تخت و بدون جهت',s:'h',cat:'Lighting',x:30,y:28,fix:'یک Key Light قوی‌تر از زاویهٔ ۴۵ درجه اضافه کنید.',why:'وقتی همهٔ سطوح نور مشابه می‌گیرند، عمق و حجم از بین می‌رود.'},
+{t:'متریال کف بدون تنوع Roughness',s:'h',cat:'Materials',x:50,y:84,fix:'یک Roughness Map با نویز ملایم اضافه کنید.',why:'سطوح واقعی یکنواخت نیستند؛ تغییر ریز انعکاس باورپذیری می‌آورد.'},
+{t:'فاصلهٔ کانونی خیلی باز',s:'m',cat:'Camera',x:84,y:22,fix:'فاصلهٔ کانونی را به ۵۰ تا ۷۰ میلی‌متر ببرید.',why:'لنز واید پرسپکتیو را اغراق می‌کند.'},
+{t:'ترکیب‌بندی بدون نقطهٔ تمرکز',s:'m',cat:'Composition',x:62,y:52,fix:'سوژهٔ اصلی را روی خط یک‌سوم قرار دهید.',why:'چشم به یک نقطهٔ اصلی نیاز دارد.'},
+{t:'لبه‌های تیز بدون Bevel',s:'l',cat:'Modeling',x:22,y:64,fix:'Bevel بسیار کم روی لبه‌های اصلی اعمال کنید.',why:'در واقعیت هیچ لبه‌ای بی‌نهایت تیز نیست.'}];
+const SL={h:'اولویت بالا',m:'متوسط',l:'کم'};
+const FM=['.blend','.fbx','.obj','.glb','.gltf','.stl','.dae','.3ds','.usdz','.usd','.ply','.max','.c4d','.ma','.mb','.skp'],FI=['.png','.jpg','.jpeg','.webp'],ALL=[...FM,...FI].join(',');
+let goal='Architecture',learn=false,prev=false,sel=null,img=null,done=false,mf=null,pg='dash';
+const scene=(c='',h=0)=>`<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" style="filter:hue-rotate(${h}deg)"><defs><linearGradient id="w${c}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3550"/><stop offset="1" stop-color="#1a2236"/></linearGradient><radialGradient id="s${c}" cx=".35" cy=".3"><stop offset="0" stop-color="#7fb8ff"/><stop offset="1" stop-color="#1b4a8a"/></radialGradient></defs><rect width="800" height="500" fill="url(#w${c})"/><polygon points="0,360 800,360 800,500 0,500" fill="#242d44"/><polygon points="170,330 330,270 470,330 310,390" fill="#3a6bb0"/><polygon points="170,330 310,390 310,470 170,410" fill="#2b5088"/><polygon points="310,390 470,330 470,410 310,470" fill="#1f3c68"/><circle cx="560" cy="330" r="70" fill="url(#s${c})"/><ellipse cx="560" cy="405" rx="80" ry="14" fill="#000" opacity=".3"/><rect x="620" y="90" width="110" height="130" fill="#35D7FF" opacity=".25"/></svg>`;
+const projs=[['Nordic Living Room','Interior','۷۸',0],['Office Lobby','Interior','۶۱',40],['Concept Pavilion','3D Visualization','۶۸',80],['Villa Exterior','Architecture','۵۵',120]];
+const NV=[['dash','نمای کلی','grid'],['proj','پروژه‌ها','folder'],['prog','پیشرفت','chart'],['learn','آموزش','book']],AC=[['set','تنظیمات','gear'],['help','مرکز راهنما','help'],['plans','اشتراک و پرداخت','spark']];
+function drawer(){const b=a=>`<button class="it ${a[0]==pg?'on':''}" onclick="go('${a[0]}')">${I(a[2])}${a[1]}</button>`;$('#dr').innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center"><div class="logo"><div class="lg">${I('cube',24)}</div>Design<span>Coach</span></div><button class="ib xb" onclick="dr(0)" style="border:0;background:none">${I('x')}</button></div><small>فضای کاری</small>${NV.map(b).join('')}<small>حساب</small>${AC.map(b).join('')}<div class="up">${I('spark')}<b style="display:block;margin-top:6px">بینش‌های عمیق‌تر</b><p>بازخورد پیشرفتهٔ AI و پروژهٔ نامحدود</p><button class="btn g" onclick="go('plans')" style="color:var(--c)">ارتقا به Pro</button></div><div class="usr"><div class="av">AN</div><div><b>الکس نلسون</b><div class="note" style="margin:0">طرح Free</div></div></div>`}
+function dr(o){$('#ov').classList.toggle('on',!!o)}
+function go(p){pg=p;dr(0);drawer();$('#main').innerHTML=V[p]();window.scrollTo(0,0)}
+function enter(){$('#auth').style.display='none';$('#app').style.display='block';go('dash')}
+function newA(){done=false;img=null;mf=null;sel=null;go('an')}
+function pick(i){sel=i;go('an')}
+function tg(k){if(k=='l')learn=!learn;else prev=!prev;go('an')}
+function setGoal(g){goal=g;go('an')}
+function run(){done=true;go('an')}
+const fsz=n=>n>1048576?(n/1048576).toFixed(1)+' MB':Math.max(1,Math.round(n/1024))+' KB';
+function load(e){const f=e.target.files[0];if(!f)return;const x='.'+f.name.split('.').pop().toLowerCase();if(FI.includes(x)){mf=null;const r=new FileReader();r.onload=()=>{img=r.result;done=true;go('an')};r.readAsDataURL(f)}else if(FM.includes(x)){img=null;mf={n:f.name,x,s:fsz(f.size)};done=true;go('an')}else alert('فرمت پشتیبانی نمی‌شود')}
+const stage=()=>{const f=prev?'filter:brightness(1.3) contrast(1.12) saturate(1.2)':'';return `<div class="stage">${img?`<img src="${img}" style="${f}">`:`<div style="width:100%;height:100%;${f}">${scene('a')}</div>`}${IS.map((p,i)=>`<div class="pin ${p.s} ${sel===i?'sel':''}" style="left:${p.x}%;top:${p.y}%" onclick="pick(${i})">${i+1}</div>`).join('')}</div>`};
+const bars=()=>SC.slice(0,3).map((s,i)=>`<div class="br"><span>${s[0]}</span><div><i style="width:${s[1]}%;background:${['var(--c)','var(--p)','var(--v)'][i]}"></i></div><b>${s[1]}</b></div>`).join('');
+const V={
+dash:()=>`<div class="dg"><div><div class="ey">چهارشنبه، ۷ خرداد</div><h1>صبح بخیر، الکس.</h1><p class="sub">آمادهٔ این هستید که رندر بعدی‌تان بهترین کارتان شود؟</p>
+<div class="dz"><div class="r"><div class="ico">${I('upload',26)}</div><div><b>تحلیل طراحی جدید</b><p>رندر یا فایل مدل خود را اینجا بیندازید یا انتخاب کنید.</p></div></div><button class="btn" onclick="newA()">انتخاب فایل ${I('chev',18)}</button></div>
+<h2>ادامه از همان‌جا که مانده‌اید</h2><p class="sub">پروژهٔ فعال و آخرین بازخورد AI</p>
+<div class="card pj"><div class="th">${scene('d')}<span class="pill">تحلیل کامل شد</span><div class="sc"><b>۷۸</b><span>امتیاز<br>کل</span></div></div><div class="pb"><div class="cat">INTERIOR · PORTFOLIO</div><h3 style="font-size:22px;margin:4px 0" dir="ltr" align="right">Nordic Living Room</h3><div class="note" style="margin:0 0 8px">۲ ساعت پیش · نسخهٔ ۰۴</div>${bars()}<div class="pr"><div class="ico" style="width:40px;height:40px">${I('spark',18)}</div><div><small>اولین اولویت</small>نور اصلی را نرم‌تر کنید تا جزئیات هایلایت‌ها برگردد.</div></div><button class="btn" onclick="run()">مشاهدهٔ تحلیل کامل ${I('chev',18)}</button><button class="btn g" style="margin-top:10px" onclick="go('cmp')">مقایسهٔ نسخه‌ها</button></div></div>
+</div><div><h2 style="margin-top:0">تحلیل‌های اخیر</h2><p class="sub">بازخورد آخرین آپلودها</p><div class="card ls"><div><span class="ico" style="color:var(--ok)">${I('check')}</span><span><b>تحلیل نورپردازی کامل شد</b><br><small>Nordic Living Room · ۲ ساعت پیش</small></span></div><div><span class="ico" style="color:var(--warn)">${I('clock')}</span><span><b>بررسی متریال در حال انجام</b><br><small>Office Lobby · دیروز</small></span></div><div><span class="ico">${I('cube')}</span><span><b>نسخهٔ جدید مقایسه شد</b><br><small>Villa Exterior · ۳ خرداد</small></span></div></div>
+<h2>بینش آموزشی</h2><p class="sub">بر اساس کارهای اخیر شما</p><div class="card ins"><small class="note" style="letter-spacing:.1em">تمرکز این هفته</small><h3 style="font-size:22px">نورپردازی هدفمند</h3><p class="sub" style="margin:0">متریال‌هایتان بهتر شده‌اند. گام بعد: سلسله‌مراتب نور برای هدایت چشم بیننده.</p><a onclick="go('learn')">شروع درس ۶ دقیقه‌ای ${I('chev',16)}</a></div></div></div>`,
+an:()=>`<h1 style="font-size:28px">تحلیل طراحی</h1><p class="sub">فایل را آپلود کنید و هدف پروژه را انتخاب کنید</p>
+<div class="chips">${['Architecture','Interior','Exterior','3D Visualization','Portfolio'].map(g=>`<span class="chip ${g==goal?'on':''}" onclick="setGoal('${g}')">${g}</span>`).join('')}</div>
+${!done?`<div class="card drop"><div class="ico" style="margin:0 auto 12px">${I('upload',26)}</div><p>فایل مدل سه‌بعدی یا تصویر رندر را اینجا بیندازید</p><label class="btn" style="cursor:pointer">انتخاب فایل<input type="file" accept="${ALL}" hidden onchange="load(event)"></label><button class="btn g" style="margin-top:10px" onclick="run()">استفاده از نمونهٔ دمو</button><div class="fmts"><b>مدل:</b>${FM.map(f=>`<span class="fmt">${f}</span>`).join('')}</div><div class="fmts"><b>تصویر:</b>${FI.map(f=>`<span class="fmt">${f}</span>`).join('')}</div><div class="note">حداکثر حجم: ۲۰۰ مگابایت (نمایشی)</div></div>`:
+`<div class="ag"><div>${mf?`<div class="card mfile"><span class="fmt on">${mf.x}</span><div><b dir="ltr">${mf.n}</b><div class="note" style="margin:0">${mf.s} · ساختار، توپولوژی و متریال‌ها تحلیل شد · پیش‌نمایش زیر نمونهٔ دمو است</div></div></div>`:''}${stage()}
+<div class="sw ${prev?'on':''}" onclick="tg('p')"><i></i>AI Preview — نتیجهٔ احتمالی پس از اصلاحات (Pro)</div><div class="sw ${learn?'on':''}" onclick="tg('l')"><i></i>Learning Mode — توضیح دلیل هر مشکل</div>
+<div class="card" style="margin:14px 0"><div class="row"><h3>امتیاز کل</h3><span class="big">۷۸</span></div>${SC.map((s,i)=>`<div class="br"><span>${s[0]}</span><div><i style="width:${s[1]}%"></i></div><b>${s[1]}</b></div>`).join('')}</div>
+</div><div><h3>اولویت‌بندی اصلاحات — از شمارهٔ ۱ شروع کنید</h3><div class="${learn?'learn':''}">${IS.map((p,i)=>`<div class="issue ${sel===i?'sel':''}" onclick="pick(${i})"><span class="tg ${p.s}">${SL[p.s]}</span><b>${i+1}. ${p.t}</b> <span class="note">${p.cat}</span><div style="color:var(--m);font-size:14px;margin-top:4px">💡 ${p.fix}</div><div class="why">🎓 ${p.why}</div></div>`).join('')}</div><button class="btn g" onclick="newA()">تحلیل جدید</button></div></div>`}`,
+proj:()=>`<h1 style="font-size:28px">پروژه‌ها</h1><p class="sub">همهٔ پروژه‌ها و نسخه‌های ذخیره‌شده</p><div class="grid g2">${projs.map((p,i)=>`<div class="card pj" onclick="go('cmp')" style="cursor:pointer"><div class="th">${scene('p'+i,p[3])}<span class="pill">${p[1]}</span></div><div class="pb" style="padding:14px"><div class="row" style="padding:0"><b dir="ltr">${p[0]}</b><span style="color:var(--c)">${p[2]}</span></div><div class="note" style="margin:2px 0 0">${3+i} نسخه</div></div></div>`).join('')}</div>`,
+prog:()=>`<h1 style="font-size:28px">پیشرفت</h1><p class="sub">روند رشد مهارت‌های شما</p><div class="grid g4"><div class="card"><div class="big">۱۲</div>پروژه</div><div class="card"><div class="big">۲۸</div>تحلیل</div><div class="card"><div class="big">۷۸</div>آخرین امتیاز</div><div class="card"><div class="big">+۱۴٪</div>این ماه</div></div><div class="card" style="margin-top:14px"><h3>روند مهارت‌ها</h3><svg viewBox="0 0 400 140" style="width:100%"><g stroke="#1e2a40"><path d="M0 35H400M0 70H400M0 105H400"/></g><polyline fill="none" stroke="#168CFF" stroke-width="3" points="10,110 90,95 170,88 250,70 330,52 390,40"/><polyline fill="none" stroke="#35D7FF" stroke-width="3" points="10,125 90,118 170,100 250,92 330,80 390,66"/><polyline fill="none" stroke="#7C4DFF" stroke-width="2" points="10,118 90,112 170,108 250,98 330,94 390,84"/></svg><div class="note">آبی: Modeling · فیروزه‌ای: Lighting · بنفش: Materials</div></div>`,
+learn:()=>`<h1 style="font-size:28px">آموزش</h1><p class="sub">درس‌های پیشنهادی بر اساس بازخوردهای شما</p>${[['نورپردازی هدفمند','۶ دقیقه'],['متریال‌های باورپذیر','۸ دقیقه'],['ترکیب‌بندی و دوربین','۵ دقیقه']].map((l,i)=>`<div class="card ${i?'':'ins'}" style="margin-bottom:12px;display:flex;gap:14px;align-items:center"><span class="ico">${I('book')}</span><span><b>${l[0]}</b><br><small class="note">${l[1]} · Learning Mode</small></span></div>`).join('')}`,
+cmp:()=>`<h1 style="font-size:28px">مقایسهٔ نسخه‌ها</h1><p class="sub">نوار را بکشید تا قبل و بعد را ببینید</p><div class="cmp"><div style="filter:brightness(1.3) contrast(1.12) saturate(1.2)">${scene('b')}</div><div id="bf" style="clip-path:inset(0 0 0 50%)">${scene('c')}</div><span class="lab" style="right:10px">Before</span><span class="lab" style="left:10px">After</span></div><input type="range" min="0" max="100" value="50" oninput="document.getElementById('bf').style.clipPath='inset(0 0 0 '+this.value+'%)'"><div class="card" style="margin-top:14px"><h3>تغییر امتیازها (v1 ← v3)</h3>${[['Lighting',41,66],['Materials',58,71],['Composition',69,78]].map(s=>`<div class="br"><span>${s[0]}</span><div><i style="width:${s[2]}%"></i></div><b style="width:70px;color:var(--ok)">${s[1]}←${s[2]}</b></div>`).join('')}</div>`,
+plans:()=>`<h1 style="font-size:28px">اشتراک و پرداخت</h1><p class="sub">طرح مناسب خود را انتخاب کنید</p><div class="grid g4">${[['Free','۰','تحلیل محدود در ماه|تحلیل پایه|تاریخچهٔ محدود'],['Student','۹$','تحلیل بیشتر و تخصصی‌تر|ذخیرهٔ پروژه‌ها|مقایسهٔ نسخه‌ها'],['Pro','۲۴$','تحلیل پیشرفته|AI Preview|Learning Mode|تاریخچهٔ کامل'],['Team','۴۹$','چندکاربره|مدیریت پروژه|اشتراک بازخورد']].map((p,i)=>`<div class="card price ${i==2?'hot':''}">${i==2?'<span class="badge">محبوب</span>':''}<h3>${p[0]}</h3><div class="big">${p[1]}<small style="font-size:12px;color:var(--m)"> /ماه</small></div><ul>${p[2].split('|').map(x=>`<li>${x}</li>`).join('')}</ul><button class="btn ${i==2?'':'g'}">${i?'ارتقا':'طرح فعلی'}</button></div>`).join('')}</div><p class="note">قیمت‌ها نمایشی هستند.</p>`,
+set:()=>`<h1 style="font-size:28px">پروفایل و تنظیمات</h1><p class="sub">&nbsp;</p><div class="card"><div class="row"><span>نام</span><b>الکس نلسون</b></div><div class="row"><span>نرم‌افزار اصلی</span><b>Blender</b></div><div class="row"><span>سطح</span><b>مبتدی – متوسط</b></div><div class="row"><span>زبان</span><b>فارسی</b></div></div>`,
+help:()=>`<h1 style="font-size:28px">مرکز راهنما</h1><p class="sub">پاسخ سؤال‌های رایج</p><div class="card"><div class="faq"><b>چه فرمت‌هایی پشتیبانی می‌شود؟</b><br>فایل مدل (Blend، FBX، OBJ، GLB/GLTF، STL، USD و...) و تصویر رندر (PNG، JPG، WebP).</div><div class="faq"><b>AI Preview دقیق است؟</b><br>تخمینی از نتیجه است، نه رندر نهایی.</div><button class="btn g" style="margin-top:12px">تماس با پشتیبانی</button></div>`};
+</script>
+</body>
+</html>
