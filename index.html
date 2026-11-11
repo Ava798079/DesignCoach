@@ -61,7 +61,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--c)}
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9;display:none}.ov.on{display:block}
 .dr{position:absolute;inset:0 0 0 auto;width:min(86vw,330px);background:#0b101a;border-left:1px solid var(--line);padding:calc(20px + env(safe-area-inset-top,0px)) 16px 20px;overflow-y:auto}
 .dr small{display:block;letter-spacing:.2em;color:var(--m);font-size:12px;margin:24px 8px 8px}
-.it{display:flex;gap:14px;align-items:center;padding:12px 14px;border-radius:13px;color:var(--m);background:none;width:100%;text-align:right;font-size:16px}.it.on{background:var(--card2);color:var(--t);box-shadow:inset -3px 0 0 var(--c)}
+.it{display:flex;gap:14px;align-items:center;padding:12px 14px;border-radius:13px;color:var(--m);background:none;width:100%;text-align:right;font-size:16px}.it.on{background:var(--card2);color:var(--t);box-shadow:inset 3px 0 0 var(--c)}
 .up{margin-top:22px;border:1px solid var(--line);border-radius:18px;padding:16px;background:linear-gradient(150deg,rgba(124,77,255,.12),rgba(22,140,255,.08))}.up p{color:var(--m);font-size:14px;margin:4px 0 12px}
 .usr{display:flex;gap:12px;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}.av{width:44px;height:44px;border-radius:50%;background:var(--card2);border:1px solid var(--line);display:grid;place-items:center;font-size:13px}
 .dg>div,.ag>div{min-width:0}
@@ -101,9 +101,9 @@ h1{font-size:40px}
   <main id="main"></main>
 </div>
 <script>
-// === اتصال به Supabase (اطلاعات پروژه شما) ===
-const SUPABASE_URL = 'https://your-project-id.supabase.co'; // آدرس URL پروژه Supabase خود را اینجا بگذارید
-const SUPABASE_ANON_KEY = 'sb_publishable_FKwfJffKN0TmdleLL455DQ_qA3e8z9k'; // کلید عمومی شما
+// === اتصال به Supabase (تنظیم شده با اطلاعات پروژه شما) ===
+const SUPABASE_URL = 'https://mptuhhwjfezupggxovcl.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_FKwfJffKN0TmdleLL455DQ_qA3e8z9k';
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const P={menu:'M4 6h16M4 12h16M4 18h16',search:'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-5-5',bell:'M6 16v-5a6 6 0 1 1 12 0v5l2 2H4zM10 21h4',plus:'M12 5v14M5 12h14',upload:'M12 16V4M7 9l5-5 5 5M4 20h16',chev:'M15 6l-6 6 6 6',spark:'M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z',check:'M5 12l5 5 9-10',clock:'M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM12 8v4l3 2',cube:'M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12v9M12 12L4 7.5',grid:'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z',folder:'M3 7h6l2 2h10v10H3z',chart:'M5 20V10M12 20V4M19 20v-7',book:'M4 5h7a2 2 0 0 1 1 1v14a2 2 0 0 0-1-1H4zM20 5h-7a2 2 0 0 0-1 1v14a2 2 0 0 1 1-1h7z',gear:'M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2',help:'M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16zM9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17v.1',x:'M6 6l12 12M18 6L6 18'};
@@ -177,7 +177,7 @@ dash:()=>`<div class="dg"><div><div class="ey">چهارشنبه، ۷ خرداد<
 <div class="dz"><div class="r"><div class="ico">${I('upload',26)}</div><div><b>تحلیل طراحی جدید</b><p>رندر یا فایل مدل خود را اینجا بیندازید یا انتخاب کنید.</p></div></div><button class="btn" onclick="newA()">انتخاب فایل ${I('chev',18)}</button></div>
 <h2>ادامه از همان‌جا که مانده‌اید</h2><p class="sub">پروژهٔ فعال و آخرین بازخورد AI</p>
 <div class="card pj"><div class="th">${scene('d')}<span class="pill">تحلیل کامل شد</span><div class="sc"><b>۷۸</b><span>امتیاز<br>کل</span></div></div><div class="pb"><div class="cat">INTERIOR · PORTFOLIO</div><h3 style="font-size:22px;margin:4px 0" dir="ltr" align="right">Nordic Living Room</h3><div class="note" style="margin:0 0 8px">۲ ساعت پیش · نسخهٔ ۰۴</div>${bars()}<div class="pr"><div class="ico" style="width:40px;height:40px">${I('spark',18)}</div><div><small>اولین اولویت</small>نور اصلی را نرم‌تر کنید تا جزئیات هایلایت‌ها برگردد.</div></div><button class="btn" onclick="run()">مشاهدهٔ تحلیل کامل ${I('chev',18)}</button><button class="btn g" style="margin-top:10px" onclick="go('cmp')">مقایسهٔ نسخه‌ها</button></div></div>
-</div><div><h2 style="margin-top:0">تحلیل‌های اخیر</h2><p class="sub">بازخورد آخرین آپلودها</p><div class="card ls"><div><span class="ico" style="color:var(--ok)">${I('check')}</span><span><b>تحلیل نورپردازی کامل شد</b><br><small>Nordic Living Room · ۲ ساعت پیش</small></span></div><div><span class="ico" style="color:var(--warn)">${I('clock')}</span><span><b>بررسی متریال در حال انجام</b><br><small>Office Lobby · دیروز</small></span></div><div><span class="ico">${I('cube')}</span><span><b>نسخهٔ جدید مقایسه شد</b><br><small>Villa Exterior · ۳ خرداد</small></span></div></div>
+</div><div><h2 style="margin-top:0">تحلیل‌های اخیر</h2><p class="sub">بازخورد آخرین آپلودها</p><div class="card ls"><div><span class="ico" style="color:var(--ok)">${I('check')}</span><span><b>تحلیل نورپردازی کامل شد</b><br><small>Nordic Living Room · ۲ ساعت پیش</small></div><div><span class="ico" style="color:var(--warn)">${I('clock')}</span><span><b>بررسی متریال در حال انجام</b><br><small>Office Lobby · دیروز</small></div><div><span class="ico">${I('cube')}</span><span><b>نسخهٔ جدید مقایسه شد</b><br><small>Villa Exterior · ۳ خرداد</small></div></div>
 <h2>بینش آموزشی</h2><p class="sub">بر اساس کارهای اخیر شما</p><div class="card ins"><small class="note" style="letter-spacing:.1em">تمرکز این هفته</small><h3 style="font-size:22px">نورپردازی هدفمند</h3><p class="sub" style="margin:0">متریال‌هایتان بهتر شده‌اند. گام بعد: سلسله‌مراتب نور برای هدایت چشم بیننده.</p><a onclick="go('learn')">شروع درس ۶ دقیقه‌ای ${I('chev',16)}</a></div></div></div>`,
 an:()=>`<h1 style="font-size:28px">تحلیل طراحی</h1><p class="sub">فایل را آپلود کنید و هدف پروژه را انتخاب کنید</p>
 <div class="chips">${['Architecture','Interior','Exterior','3D Visualization','Portfolio'].map(g=>`<span class="chip ${g==goal?'on':''}" onclick="setGoal('${g}')">${g}</span>`).join('')}</div>
